@@ -9,17 +9,6 @@ import java.util.List;
 
 public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Long> {
 
-    // CRUD
-    void saveItemPedido(ItemPedido itemPedido);
-
-    ItemPedido findItemPedidoById(Long id);
-
-    List<ItemPedido> findAllItemPedido();
-
-    void updateItemPedido(ItemPedido itemPedido);
-
-    void deleteItemPedidoById(Long id);
-
     // Otros
     List<ItemPedido> findItemPedidoByPedidoId(Long idPedido);
 

@@ -11,21 +11,12 @@ import java.util.List;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
-    // CRUD
-    void savePedido(Pedido pedido);
-
-    Pedido findPedidoById(Long id);
-
-    List<Pedido> findAllPedidos();
-
-    void updatePedido(Pedido pedido);
-
-    void deletePedidoById(Long id);
-
     // Otros
     List<Pedido> findPedidoByFechaPedidoBetween(LocalDateTime fechaInicio, LocalDateTime fechaFin);
 
+    @Query("SELECT p FROM Pedido p WHERE p.cliente.id = :idCliente AND p.status = :status")
     List<Pedido> findPedidoByClienteAndStatus(Long idCliente, PedidoStatus status);
+
 
     // Hay que revisarlo, no estamos seguros de si funciona o no
     @Query("SELECT p FROM Pedido p JOIN FETCH p.itemsPedidos WHERE p.cliente.id = :idCliente")

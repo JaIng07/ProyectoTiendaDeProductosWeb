@@ -24,7 +24,6 @@ public class Pago {
     @Column(name = "totalPago")
     private Double totalPago;
 
-    //NO OLVIDAR colocar una restriccion que no permita que la fecha y hora de pago sea anterior a la fecha y hora de la realizacion del pedido
     @Column(name = "fechaPago")
     private LocalDateTime fechaPago;
 
@@ -34,5 +33,13 @@ public class Pago {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idPedido", referencedColumnName = "id")
     private Pedido pedido;
+
+    @PrePersist
+    public void validarFechaPago() {
+        LocalDateTime fechaPedido = pedido.getFechaPedido(); // Obtener la fecha de realización del pedido
+        if (fechaPago.isBefore(fechaPedido)) {
+            throw new IllegalStateException("La fecha y hora de pago no puede ser anterior a la fecha y hora de realización del pedido");
+        }
+    }
 
 }
