@@ -19,7 +19,7 @@ public interface ProductoMapper {
 
     Producto productoSaveDtoToProductoEntity(ProductoToSaveDto productoDto);
 
-    @Mapping(target = "itemsPedidos", ignore = true)
+    @Mapping(target = "itemPedidos", ignore = true)
     Producto productToShowDtoToProductEntity(ProductoToShowDto productToShowDto);
 
     ProductoToShowDto productEntityToProductToShowDto(Producto product);

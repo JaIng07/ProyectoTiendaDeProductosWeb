@@ -22,7 +22,7 @@ public interface PedidoMapper {
 
     @Mapping(target = "pago", ignore = true)
     @Mapping(target = "detalleEnvio",  ignore = true)
-    @Mapping(target = "itemsPedido",  ignore = true)
+    @Mapping(target = "itemsPedidos",  ignore = true)
     @Mapping(target = "cliente.pedidos",  ignore = true)
     Pedido pedidoToShowDtoToPedidoEntity(PedidoToShowDto pedidoToShowDto);
 
